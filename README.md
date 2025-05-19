@@ -40,7 +40,7 @@
         *   `ViewModel`: Предоставляет данные для View и обрабатывает пользовательские действия.
 
 *   **Платформа:**
-    *   Android - Целевая платформа для развертывания приложения.
+    *   Android - Целевая платформа.
  
 ## Функциональность
 
@@ -106,9 +106,38 @@
 
 ## Скриншоты
 
-<details>
-    <summary>Нажмите, чтобы посмотреть скриншоты</summary>
+### Здесь представлены скриншоты различных экранов приложения
 
+<details>
+    <summary>Заметки</summary>
+<div>
+</br>
+    <p align="center">
+      <img src="images/notes.png" height="400"  alt="screenshot"/>
+      <img src="images/notes-category" height="400"  alt="screenshot"/>
+      <img src="images/add-note.png" height="400"  alt="screenshot"/>
+    </p>
+    <p align="center">
+      <img src="images/add-category.png" height="400"  alt="screenshot"/>
+      <img src="images/notes-dark.png" height="400"  alt="screenshot"/>
+    </p>
+  </div>
+</details>
+
+<details>
+    <summary>Планы</summary>
+
+</details>
+
+<details>
+    <summary>Расходы</summary>
+
+</details>
+
+<details>
+    <summary>О приложении</summary>
+
+</details>
 
 ## Лицензия
 
