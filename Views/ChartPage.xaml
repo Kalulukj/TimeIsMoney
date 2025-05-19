@@ -6,8 +6,7 @@
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
                           xmlns:vModels="clr-namespace:TimeIsMoney.ViewModels"
              Shell.FlyoutBehavior="Disabled" BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
-              Shell.TabBarIsVisible="False" Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}"
-             >
+              Shell.TabBarIsVisible="False" Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}">
     <Shell.TitleView>
         <toolkit:DockLayout>
             <Label x:Name="titleLabel" toolkit:DockLayout.DockPosition="Left" Text="Диаграмма (сумма)" HorizontalOptions="Start" TextColor="White" FontSize="20" Margin="10"></Label>
@@ -26,49 +25,47 @@
                     <dxc:DonutSeries.Data>
                         <dxc:PieSeriesDataAdapter x:Name="pieDiagramm" DataSource="{Binding groupList}"
                                               LabelDataMember="name"
-                                              ValueDataMember="cost"/>
+                                              ValueDataMember="cost" />
                     </dxc:DonutSeries.Data>
                     <dxc:DonutSeries.Label>
                         <dxc:PieSeriesLabel Position="TwoColumns" TextPattern="{}{VP}%" Indent="30">
                             <dxc:PieSeriesLabel.Style>
                                 <dxc:PieSeriesLabelStyle ConnectorThickness="2">
                                     <dxc:PieSeriesLabelStyle.TextStyle>
-                                        <dxc:TextStyle Color="{AppThemeBinding Light=Black, Dark=White}" Size="12"/>
+                                        <dxc:TextStyle Color="{AppThemeBinding Light=Black, Dark=White}" Size="12" />
                                     </dxc:PieSeriesLabelStyle.TextStyle>
                                 </dxc:PieSeriesLabelStyle>
                             </dxc:PieSeriesLabel.Style>
                         </dxc:PieSeriesLabel>
                     </dxc:DonutSeries.Label>
                     <dxc:DonutSeries.HintOptions>
-                        <dxc:PieSeriesHintOptions x:Name="pieHint" PointTextPattern="{}{L}: {V} BYN"/>
+                        <dxc:PieSeriesHintOptions x:Name="pieHint" PointTextPattern="{}{L}: {V} BYN" />
                     </dxc:DonutSeries.HintOptions>
                     <dxc:DonutSeries.CenterLabel>
                         <dxc:PieCenterTextLabel x:Name="centerLabel" AutoSizeText="False"  TextPattern="{}{TV}">
                             <dxc:PieCenterTextLabel.Style>
                                 <dxc:PieCenterTextLabelStyle>
                                     <dxc:PieCenterTextLabelStyle.TextStyle>
-                                        <dxc:TextStyle x:Name="myStyle" Size="35"/>
+                                        <dxc:TextStyle x:Name="myStyle" Size="35" />
                                     </dxc:PieCenterTextLabelStyle.TextStyle>
                                 </dxc:PieCenterTextLabelStyle>
-                            </dxc:PieCenterTextLabel.Style>-
+                            </dxc:PieCenterTextLabel.Style> -
                         </dxc:PieCenterTextLabel>
-                        
                     </dxc:DonutSeries.CenterLabel>
                 </dxc:DonutSeries>
             </dxc:PieChartView.Series>
             <dxc:PieChartView.ChartStyle>
-                <dxc:PieChartStyle Palette="{Binding Palette}" 
-                                   />
+                <dxc:PieChartStyle Palette="{Binding Palette}" />
             </dxc:PieChartView.ChartStyle>
             <dxc:PieChartView.Legend>
-                
+
                 <dxc:Legend Orientation="TopToBottom"
                         HorizontalPosition="Center"
                         VerticalPosition="BottomOutside">
                     <dxc:Legend.Style>
                         <dxc:LegendStyle MarkerSize="14" Padding="10" TextIndent="5">
                             <dxc:LegendStyle.TextStyle>
-                                <dxc:TextStyle Color="{AppThemeBinding Light=Black, Dark=White}" Size="14"/>
+                                <dxc:TextStyle Color="{AppThemeBinding Light=Black, Dark=White}" Size="14" />
                             </dxc:LegendStyle.TextStyle>
                         </dxc:LegendStyle>
                     </dxc:Legend.Style>
@@ -78,7 +75,7 @@
                 <dxc:PieHint Enabled="True">
                     <dxc:PieHint.Style>
                         <dxc:PieHintStyle TextIndent="5"
-                                          BackgroundColor="{AppThemeBinding Light=#424651, Dark=White}"/>
+                                          BackgroundColor="{AppThemeBinding Light=#424651, Dark=White}" />
                     </dxc:PieHint.Style>
                 </dxc:PieHint>
             </dxc:PieChartView.Hint>

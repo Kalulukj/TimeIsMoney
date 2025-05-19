@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeIsMoney.Models;
+﻿using TimeIsMoney.Models;
 
 namespace TimeIsMoney.Services;
+
 internal interface IExpenseRepository
 {
     Task<bool> AddUpdateExpenseAsync(Expense expense);
+
     Task<bool> DeleteExpenseAsync(int expenseId);
+
     Task<Expense> GetExpenseAsync(int expenseId);
+
     Task<IEnumerable<Expense>> GetExpenseAsync();
 
     Task<bool> AddUpdateExpenseCategoryAsync(ExpenseCategory expenseCategory);
+
     Task<bool> DeleteExpenseCategoryAsync(int eCategoryId);
+
     Task<ExpenseCategory> GetExpenseCategoryAsync(int eCategoryId);
+
     Task<IEnumerable<ExpenseCategory>> GetExpenseCategoryAsync();
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
-
-namespace TimeIsMoney.Models
+﻿namespace TimeIsMoney.Models
 {
     public partial class NoteCategory
     {
@@ -24,6 +17,7 @@ namespace TimeIsMoney.Models
         {
             get; set;
         }
+
         public Color getFormatColor
         {
             get

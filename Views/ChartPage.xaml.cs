@@ -1,16 +1,15 @@
-using System.Collections.ObjectModel;
-using TimeIsMoney.Models;
 using TimeIsMoney.ViewModels;
 
 namespace TimeIsMoney.Views;
 
 public partial class ChartPage : ContentPage
 {
-    ChartPageViewModel chartPageViewModel;
+    private ChartPageViewModel chartPageViewModel;
     private static bool flagDiagramm = false;
+
     public ChartPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         this.BindingContext = chartPageViewModel = new ChartPageViewModel();
     }
 

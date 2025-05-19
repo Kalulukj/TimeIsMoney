@@ -28,8 +28,8 @@
         </toolkit:DockLayout>
     </Shell.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Добавить категорию" Order="Secondary" Command="{Binding AddExpenseCategoryCommand}"/>
-        <ToolbarItem Text="Посмотреть диаграмму" Order="Secondary" Command="{Binding ViewChartCommand}"/>
+        <ToolbarItem Text="Добавить категорию" Order="Secondary" Command="{Binding AddExpenseCategoryCommand}" />
+        <ToolbarItem Text="Посмотреть диаграмму" Order="Secondary" Command="{Binding ViewChartCommand}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
@@ -41,7 +41,7 @@
                     <StackLayout>
                         <StackLayout>
                             <dxe:ComboBoxEdit  IsVisible="false" x:Name="myEdit"  Grid.Row="0" ItemsSource="{Binding eCategoryList}"
-                                      LabelText="Категория транзакции " DisplayMember="name" 
+                                      LabelText="Категория транзакции " DisplayMember="name"
                                   SelectionChanged="myEdit_SelectionChanged">
                                 <dxe:ComboBoxEdit.ItemTemplate>
                                     <DataTemplate x:DataType="models:ExpenseCategory">
@@ -50,9 +50,9 @@
                                             <Ellipse Fill="{Binding getFormatColor}" Grid.Column="1"
          WidthRequest="20"
          HeightRequest="20"
-         HorizontalOptions="End" 
-         Margin="5"/>
-                                            <ImageButton Source="edit.png" Grid.Column="2" 
+         HorizontalOptions="End"
+         Margin="5" />
+                                            <ImageButton Source="edit.png" Grid.Column="2"
                                              Command="{Binding Source={RelativeSource AncestorType={x:Type vModels:ExpensePageViewModel}},
                                       Path=ExpenseCategoryTappedEditCommand}" CommandParameter="{Binding .}"
                                              HeightRequest="20" WidthRequest="20">
@@ -74,31 +74,30 @@
                 CustomDayOfWeekCellAppearance="CustomDayOfWeekCellAppearance" SelectedDateChanged="planCalendar_SelectedDateChanged">
                                     <dxe:DXCalendar.DayCellAppearance>
                                         <dxe:CalendarDayCellAppearance FontAttributes="Italic"
-                                       TextColor="{AppThemeBinding Light=Black, Dark=#FAEBD7}"/>
+                                       TextColor="{AppThemeBinding Light=Black, Dark=#FAEBD7}" />
                                     </dxe:DXCalendar.DayCellAppearance>
                                     <dxe:DXCalendar.DayOfWeekCellAppearance>
                                         <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Italic"
-                                             TextColor="Black"/>
+                                             TextColor="Black" />
                                     </dxe:DXCalendar.DayOfWeekCellAppearance>
                                 </dxe:DXCalendar>
                             </Border>
                         </StackLayout>
                     </StackLayout>
-
                 </toolkit:Expander>
 
                 <Label x:Name="emptyLabel" Margin="0,0,0,-20" toolkit:DockLayout.DockPosition="None" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center"></Label>
 
                 <dxcv:DXCollectionView x:Name="ExpenseView" ItemsSource="{Binding expenseList}" Margin="15"
                                        IsScrollBarVisible="False" ItemSpacing="10" Orientation="Vertical"
-                                     toolkit:DockLayout.DockPosition="None" >
+                                     toolkit:DockLayout.DockPosition="None">
                     <dxcv:DXCollectionView.SortDescriptions>
-                        <dxcv:SortDescription FieldName="time" SortOrder="Descending"/>
+                        <dxcv:SortDescription FieldName="time" SortOrder="Descending" />
                     </dxcv:DXCollectionView.SortDescriptions>
 
                     <!--Group items.-->
                     <dxcv:DXCollectionView.GroupDescription>
-                        <dxcv:GroupDescription FieldName="DateDifferenceFromToday" SortOrder="Ascending"/>
+                        <dxcv:GroupDescription FieldName="DateDifferenceFromToday" SortOrder="Ascending" />
                     </dxcv:DXCollectionView.GroupDescription>
 
                     <!--Define the group header template.-->
@@ -108,8 +107,7 @@
                                 <Label FontSize="25"
                        Margin="-55,-5,0,-5"
                        TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark=White}"
-                       Text="{Binding Value}"/>
-
+                       Text="{Binding Value}" />
                             </StackLayout>
                         </DataTemplate>
                     </dxcv:DXCollectionView.GroupHeaderTemplate>
@@ -121,13 +119,13 @@
                                 </Border.StrokeShape>
                                 <Grid Padding="5" Margin="10" ColumnSpacing="5">
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                        <TapGestureRecognizer NumberOfTapsRequired="1"
                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vModels:ExpensePageViewModel}},
-                                      Path=ExpenseTappedEditCommand}" CommandParameter="{Binding .}"/>
+                                      Path=ExpenseTappedEditCommand}" CommandParameter="{Binding .}" />
                                     </Grid.GestureRecognizers>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"></ColumnDefinition>
@@ -138,28 +136,27 @@
                        Text="{Binding getFormatDate}"
                            FontSize="14" HorizontalOptions="Center" Margin="-5,0,0,0"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                     <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center"
                        Text="{Binding getFormatTime}"
                            FontSize="14" HorizontalOptions="Center" Margin="-5,0,0,0"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                     <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center"
                        Text="{Binding text}"
                              FontSize="16"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                     <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
                        Text="{Binding name}"
                            FontSize="13"
                        FontAttributes="Italic,Bold"
-                       LineBreakMode="TailTruncation" TextColor="{Binding getFormatColor}"/>
+                       LineBreakMode="TailTruncation" TextColor="{Binding getFormatColor}" />
                                     <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center"
                        Text="{Binding cost,StringFormat='{0} BYN'}"
                            FontSize="14" HorizontalOptions="Center" Margin="0,0,-5,0"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -180,12 +177,7 @@
                 Radius="20"
                 Opacity="0.7" />
                 </Border>
-
             </toolkit:DockLayout>
         </RefreshView>
     </StackLayout>
-
-
-
-
 </ContentPage>

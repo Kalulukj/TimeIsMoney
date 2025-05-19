@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿namespace TimeIsMoney.Models;
 
-namespace TimeIsMoney.Models;
 public partial class Note
 {
     [PrimaryKey, AutoIncrement]
@@ -13,6 +7,7 @@ public partial class Note
     {
         get; set;
     }
+
     public string name
     {
         get; set;
@@ -42,7 +37,6 @@ public partial class Note
     {
         get; set;
     } = "Без категории";
-
 
     public string getFormatDate
     {
@@ -79,6 +73,7 @@ public partial class Note
             return Color.FromArgb(color);
         }
     }
+
     public string DateDifferenceFromToday
     {
         get

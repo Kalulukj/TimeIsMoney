@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿namespace TimeIsMoney.Models;
 
-namespace TimeIsMoney.Models;
 public partial class Plan
 {
     [PrimaryKey, AutoIncrement]
@@ -13,6 +7,7 @@ public partial class Plan
     {
         get; set;
     }
+
     public string name
     {
         get; set;
@@ -27,6 +22,7 @@ public partial class Plan
     {
         get; set;
     }
+
     public string date
     {
         get; set;
@@ -43,6 +39,7 @@ public partial class Plan
             return date;
         }
     }
+
     public string getFormatTime
     {
         get
@@ -75,7 +72,7 @@ public partial class Plan
                 {
                     return "C       Послезавтра";
                 }
-                else if (nextDates <=6)
+                else if (nextDates <= 6)
                 {
                     return "D       На этой неделе";
                 }
@@ -92,7 +89,6 @@ public partial class Plan
                     return "G       " + dateTime.ToString("dd MMMM yyyy");
                 }
             }
-
             else if (difference.TotalDays == 0)
             {
                 return "A       Сегодня";
@@ -122,8 +118,6 @@ public partial class Plan
             {
                 return "M       " + dateTime.ToString("dd MMMM yyyy");
             }
-
         }
     }
 }
-

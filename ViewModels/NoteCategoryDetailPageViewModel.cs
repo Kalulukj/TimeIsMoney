@@ -1,14 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Maui.Converters;
-using CommunityToolkit.Mvvm.Input;
 using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels
 {
-  public partial class NoteCategoryDetailPageViewModel : BaseNoteViewModel
+    public partial class NoteCategoryDetailPageViewModel : BaseNoteViewModel
     {
         public ObservableCollection<ColorCircle> origin_list
         {
@@ -39,6 +34,7 @@ namespace TimeIsMoney.ViewModels
         {
             get;
         }
+
         public NoteCategoryDetailPageViewModel()
         {
             noteList = new ObservableCollection<Note>();
@@ -63,13 +59,12 @@ namespace TimeIsMoney.ViewModels
                 noteList.Clear();
                 var newNoteList = await App.NoteService.GetNoteAsync();
                 foreach (var item in newNoteList)
-            {
+                {
                     if (item.nCategoryId == noteCategory.nCategoryId)
                     {
                         item.color = noteCategory.color;
                         item.categoryName = noteCategory.name;
                         await App.NoteService.AddUpdateNoteAsync(item);
-
                     }
                 }
             }

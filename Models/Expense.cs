@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿namespace TimeIsMoney.Models;
 
-namespace TimeIsMoney.Models;
 public partial class Expense
 {
     [PrimaryKey, AutoIncrement]
@@ -18,10 +12,12 @@ public partial class Expense
     {
         get; set;
     }
+
     public string date
     {
         get; set;
     }
+
     public decimal cost
     {
         get; set;
@@ -41,6 +37,7 @@ public partial class Expense
     {
         get; set;
     } = "Без категории";
+
     public int eCategoryId
     {
         get; set;
@@ -57,6 +54,7 @@ public partial class Expense
             return date;
         }
     }
+
     public string getFormatTime
     {
         get
@@ -68,6 +66,7 @@ public partial class Expense
             return time;
         }
     }
+
     public Color getFormatColor
     {
         get
@@ -79,6 +78,7 @@ public partial class Expense
             return Color.FromArgb(color);
         }
     }
+
     public string DateDifferenceFromToday
     {
         get

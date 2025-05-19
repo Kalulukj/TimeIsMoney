@@ -1,15 +1,13 @@
-using DevExpress.Data.Filtering;
 using TimeIsMoney.Models;
-using DevExpress.Maui.Editors;
 using TimeIsMoney.ViewModels;
 
 namespace TimeIsMoney.Views;
 
 public partial class ExpensePage : ContentPage
 {
-    ExpensePageViewModel expensePageViewModel;
+    private ExpensePageViewModel expensePageViewModel;
 
-    void CustomDayCellAppearance(object sender, CustomSelectableCellAppearanceEventArgs e)
+    private void CustomDayCellAppearance(object sender, CustomSelectableCellAppearanceEventArgs e)
     {
         if (e.Date.DayOfWeek == DayOfWeek.Saturday || e.Date.DayOfWeek == DayOfWeek.Sunday)
         {
@@ -24,6 +22,7 @@ public partial class ExpensePage : ContentPage
         if (e.DayOfWeek == DayOfWeek.Saturday || e.DayOfWeek == DayOfWeek.Sunday)
             e.TextColor = Color.FromArgb("#F44848");
     }
+
     public ExpensePage()
     {
         InitializeComponent();
@@ -34,7 +33,6 @@ public partial class ExpensePage : ContentPage
     {
         base.OnAppearing();
         expensePageViewModel.OnAppearing();
-
     }
 
     private void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -59,6 +57,7 @@ public partial class ExpensePage : ContentPage
             else { emptyLabel.Text = ""; }
         }
     }
+
     private void planCalendar_SelectedDateChanged(object sender, EventArgs e)
     {
         if (expenseCalendar.SelectedDate == null) { return; }
@@ -66,6 +65,7 @@ public partial class ExpensePage : ContentPage
         if (ExpenseView.VisibleItemCount <= 0) { emptyLabel.Text = "ѕохоже, что в данный день вы не потратились..."; }
         else { emptyLabel.Text = ""; }
     }
+
     private void ImageButton_Clicked(object sender, EventArgs e)
     {
         if (myExpander.IsExpanded != true)

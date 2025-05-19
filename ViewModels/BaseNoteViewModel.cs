@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using TimeIsMoney.Models;
+﻿using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class BaseNoteViewModel : BaseViewModel
 {
     [ObservableProperty]
@@ -42,6 +36,7 @@ public partial class BaseNoteViewModel : BaseViewModel
 
     [ObservableProperty]
     private DateTime _now;
+
     public INavigation Navigation
     {
         get; set;

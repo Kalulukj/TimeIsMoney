@@ -18,15 +18,15 @@ xmlns:models="clr-namespace:TimeIsMoney.Models"
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="Transparent"/>
-                                <Setter Property="Scale" Value="1.2"/>
+                                        Value="Transparent" />
+                                <Setter Property="Scale" Value="1.2" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Normal">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="Transparent"/>
-                                <Setter Property="Scale" Value="0.8"/>
+                                        Value="Transparent" />
+                                <Setter Property="Scale" Value="0.8" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -40,15 +40,15 @@ xmlns:models="clr-namespace:TimeIsMoney.Models"
             <StackLayout VerticalOptions="FillAndExpand">
                 <dxe:TextEdit Text="{Binding ExpenseCategory.name, Mode=TwoWay}"  Margin="0,0,0,-10" x:Name="eCategoryName"
                               MaxCharacterCountOverflowMode="LimitInput" MaxCharacterCount="25" ErrorText ="Название - обязательное поле"
-                              Grid.Row="0" LabelText="Название категории? "/>
+                              Grid.Row="0" LabelText="Название категории? " />
 
-                <Label Margin="0,20,0,5" Text="Выберите цвет раздела"/>
+                <Label Margin="0,20,0,5" Text="Выберите цвет раздела" />
 
                 <Border Padding="10" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5" />
                     </Border.StrokeShape>
-                    <CollectionView x:Name="ColorPicker" ItemsLayout="HorizontalGrid, 3" HorizontalOptions="Center" 
+                    <CollectionView x:Name="ColorPicker" ItemsLayout="HorizontalGrid, 3" HorizontalOptions="Center"
                                     ItemsSource="{Binding origin_list}" SelectionChanged="ColorPicker_SelectionChanged"
                             SelectionMode="Single">
 
@@ -59,18 +59,16 @@ xmlns:models="clr-namespace:TimeIsMoney.Models"
                                     <Grid ColumnDefinitions="Auto"
                       Padding="10"
                                   Margin="5"
-                      ColumnSpacing="25"/>
+                      ColumnSpacing="25" />
                                     <Ellipse Fill="{Binding color}"
          WidthRequest="45"
          HeightRequest="45"
-         HorizontalOptions="Center" 
-         Margin="5"/>
+         HorizontalOptions="Center"
+         Margin="5" />
                                 </Grid>
-
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
                 </Border>
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
@@ -78,26 +76,24 @@ xmlns:models="clr-namespace:TimeIsMoney.Models"
                   ColumnSpacing="50"
                   VerticalOptions="Center"
                   HorizontalOptions="CenterAndExpand">
-                    <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40" 
+                    <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40"
                                         HorizontalOptions="Center" VerticalOptions="Center"
                                         Grid.Column="0"
-                                 Clicked="Button_Clicked" IsVisible="true" 
-                                       >
+                                 Clicked="Button_Clicked" IsVisible="true">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </ImageButton.Behaviors>
                     </ImageButton>
 
-
                     <ImageButton Grid.Column="1" Source="cancel.png" HeightRequest="40"
                                  WidthRequest="40"  Command="{Binding CancelCommand}"
-                                 HorizontalOptions="Center" VerticalOptions="Center" >
+                                 HorizontalOptions="Center" VerticalOptions="Center">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </ImageButton.Behaviors>
                     </ImageButton>
                     <ImageButton Grid.Column="2" Source="delete.png" HeightRequest="35" Command="{Binding ExpenseCategoryTappedDeleteCommand}" CommandParameter="{Binding ExpenseCategory}"
-                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center" >
+                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </ImageButton.Behaviors>

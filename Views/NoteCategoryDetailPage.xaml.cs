@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.Input;
 using TimeIsMoney.Models;
 using TimeIsMoney.ViewModels;
 
@@ -10,13 +9,13 @@ public partial class NoteCategoryDetailPage : ContentPage
     {
         get; set;
     }
+
     public NoteCategoryDetailPage()
     {
         InitializeComponent();
         BindingContext = new NoteCategoryDetailPageViewModel();
         if (ColorPicker.SelectedItem is ColorCircle current)
             ((NoteCategoryDetailPageViewModel)BindingContext).MyColor = current.strColor;
-
     }
 
     public NoteCategoryDetailPage(NoteCategory noteCategory)
@@ -29,7 +28,6 @@ public partial class NoteCategoryDetailPage : ContentPage
             ((NoteCategoryDetailPageViewModel)BindingContext).NoteCategory = noteCategory;
             ((NoteCategoryDetailPageViewModel)BindingContext).SelectedCategoryColor = noteCategory.color;
         }
-
     }
 
     private void ColorPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,6 +35,7 @@ public partial class NoteCategoryDetailPage : ContentPage
         if (ColorPicker.SelectedItem is ColorCircle current)
             ((NoteCategoryDetailPageViewModel)BindingContext).MyColor = current.strColor;
     }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
         nCategoryName.HasError = string.IsNullOrWhiteSpace(nCategoryName.Text);

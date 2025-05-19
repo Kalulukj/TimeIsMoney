@@ -1,26 +1,21 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
-using DevExpress.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
-using Plugin.LocalNotification;
+
 namespace TimeIsMoney;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
             .UseDevExpress()
             .UseLocalNotification()
             .ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("Nunito-Regular.ttf", "NunitoRegular");
                 fonts.AddFont("Nunito-Italic.ttf", "NunitoItalic");
             })
@@ -40,5 +35,5 @@ public static class MauiProgram
                 Android.Content.Res.ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
         });
         return builder.Build();
-	}
+    }
 }

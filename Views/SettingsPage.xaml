@@ -41,36 +41,35 @@
             SelectedItem="{Binding Path=Theme, Source={x:Static settings:SettingsService.Instance}}"
             VerticalOptions="Center" />
                     </HorizontalStackLayout>
-
                 </VerticalStackLayout>
             </Grid>
             <StackLayout>
                 <Border Margin="20,10,20,10" HeightRequest="150" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="5" />
-            </Border.StrokeShape>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
                     <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
                         </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="110"/>
-                    </Grid.ColumnDefinitions>
-                <Image Source="user.png" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Center"
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="110" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="user.png" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Center"
                        HeightRequest="20" Grid.Row="0" Grid.Column="0">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </Image.Behaviors>
                         </Image>
-                        <Label Grid.Column="1" FontSize="16" Grid.Row="0" FontAttributes="Bold" Text="Разработчик"/>
-                        <Label Grid.Column="2" FontSize="16" Grid.Row="0" FontAttributes="Bold" HorizontalOptions="End" Text="Шаков Виктор"/>
+                        <Label Grid.Column="1" FontSize="16" Grid.Row="0" FontAttributes="Bold" Text="Разработчик" />
+                        <Label Grid.Column="2" FontSize="16" Grid.Row="0" FontAttributes="Bold" HorizontalOptions="End" Text="Шаков Виктор" />
 
                         <Image Source="vk.png" Margin="0,15,0,0" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
                        HeightRequest="30" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">
@@ -78,48 +77,48 @@
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </Image.Behaviors>
                         </Image>
-                        <Label Grid.Column="1" FontSize="16" Margin="0,15,0,0" Grid.Row="1" Grid.ColumnSpan="2" FontAttributes="Bold" Text="Связь с разработчиком"/>
-                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Text="Если у вас есть вопросы, то вы можете связаться с разработчиком приложения."/>
+                        <Label Grid.Column="1" FontSize="16" Margin="0,15,0,0" Grid.Row="1" Grid.ColumnSpan="2" FontAttributes="Bold" Text="Связь с разработчиком" />
+                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Text="Если у вас есть вопросы, то вы можете связаться с разработчиком приложения." />
                     </Grid>
-        </Border>
-        </StackLayout>
-        <StackLayout>
+                </Border>
+            </StackLayout>
+            <StackLayout>
                 <Border Margin="20,10,20,10" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" HeightRequest="220"
                         BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="5" />
-            </Border.StrokeShape>
-        <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
                         </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="110"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="110" />
                         </Grid.ColumnDefinitions>
-                <Image Source="github.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
+                        <Image Source="github.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
                        HeightRequest="30" Grid.RowSpan="2" Grid.Column="0">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </Image.Behaviors>
                         </Image>
-                        <Label Grid.ColumnSpan="2" Grid.Column="1" FontSize="16" Grid.Row="0" FontAttributes="Bold" Text="Исходный код приложения"/>
-                        <Label Grid.ColumnSpan="2"  Grid.Column="1" Margin="0,-20,0,0" Grid.Row="1" Text="Код приложения находится в свободном доступе на Github разработчика."/>
+                        <Label Grid.ColumnSpan="2" Grid.Column="1" FontSize="16" Grid.Row="0" FontAttributes="Bold" Text="Исходный код приложения" />
+                        <Label Grid.ColumnSpan="2"  Grid.Column="1" Margin="0,-20,0,0" Grid.Row="1" Text="Код приложения находится в свободном доступе на Github разработчика." />
                         <Image Margin="0,-5,0,0" Source="tag.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
                        HeightRequest="30" Grid.Row="2" Grid.Column="0">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </Image.Behaviors>
                         </Image>
-                        <Label Grid.Column="1" FontSize="16"  Grid.Row="2" FontAttributes="Bold" Text="Версия приложения"/>
-                        <Label Grid.Column="2" FontSize="16" FontAttributes="Bold"  Grid.Row="2" HorizontalOptions="End" Text="1.0.1"/>
+                        <Label Grid.Column="1" FontSize="16"  Grid.Row="2" FontAttributes="Bold" Text="Версия приложения" />
+                        <Label Grid.Column="2" FontSize="16" FontAttributes="Bold"  Grid.Row="2" HorizontalOptions="End" Text="1.0.1" />
 
                         <Image Margin="0,10,0,0"  Source="license.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
                        HeightRequest="30" Grid.Row="3" Grid.Column="0">
@@ -127,12 +126,11 @@
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </Image.Behaviors>
                         </Image>
-                        <Label Grid.Column="1"  Margin="0,15,0,0" FontSize="16"  Grid.Row="3" FontAttributes="Bold" Text="Лицензия"/>
-                        <Label Grid.Column="2"  Margin="0,15,0,0" HorizontalTextAlignment="End" FontSize="16" FontAttributes="Bold"  Grid.Row="3" HorizontalOptions="End" Text="Apache License 2.0"/>
-
+                        <Label Grid.Column="1"  Margin="0,15,0,0" FontSize="16"  Grid.Row="3" FontAttributes="Bold" Text="Лицензия" />
+                        <Label Grid.Column="2"  Margin="0,15,0,0" HorizontalTextAlignment="End" FontSize="16" FontAttributes="Bold"  Grid.Row="3" HorizontalOptions="End" Text="Apache License 2.0" />
                     </Grid>
-        </Border>
-        </StackLayout>
+                </Border>
+            </StackLayout>
             <StackLayout>
                 <Border Margin="20,10,20,10" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" HeightRequest="50"
                         BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
@@ -141,11 +139,11 @@
                     </Border.StrokeShape>
                     <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Image Source="diploma.png" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"
                        HeightRequest="20" Grid.Row="0" Grid.Column="0">
@@ -153,7 +151,7 @@
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </Image.Behaviors>
                         </Image>
-                        <Label Grid.Column="1" FontSize="13" Grid.Row="0" VerticalTextAlignment="Center" Text="Разработано в рамках дипломного проекта"/>
+                        <Label Grid.Column="1" FontSize="13" Grid.Row="0" VerticalTextAlignment="Center" Text="Разработано в рамках дипломного проекта" />
                     </Grid>
                 </Border>
             </StackLayout>

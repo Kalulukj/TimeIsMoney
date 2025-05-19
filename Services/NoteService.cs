@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeIsMoney.Models;
-using SQLite;
+﻿using TimeIsMoney.Models;
 
 namespace TimeIsMoney.Services;
+
 public class NoteService : INoteRepository, IPlanRepository, IExpenseRepository
 {
     public SQLiteAsyncConnection _database;
+
     public NoteService(string dbPath)
     {
-      /*  Shell.Current.DisplayAlert("Как насчет синхронизации?",
-$"Найдены несинхронизированные данные от {File.GetLastWriteTime(dbPath).ToString()}." +
-"\nВосстановить?", "Да", "Нет");*/
+        /*  Shell.Current.DisplayAlert("Как насчет синхронизации?",
+  $"Найдены несинхронизированные данные от {File.GetLastWriteTime(dbPath).ToString()}." +
+  "\nВосстановить?", "Да", "Нет");*/
         _database = new SQLiteAsyncConnection(dbPath);
         _database.CreateTableAsync<Note>().Wait();
         _database.CreateTableAsync<NoteCategory>().Wait();

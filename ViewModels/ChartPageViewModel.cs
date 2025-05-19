@@ -1,8 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
 using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels
@@ -13,17 +9,20 @@ namespace TimeIsMoney.ViewModels
         {
             get;
         }
+
         public ObservableCollection<Expense> groupList
         {
             get; set;
         }
+
         public ObservableCollection<Expense> groupList2
         {
             get; set;
         }
 
-        readonly Color[] palette;
+        private readonly Color[] palette;
         public Color[] Palette => palette;
+
         public ChartPageViewModel()
         {
             expenseList = new ObservableCollection<Expense>();
@@ -75,19 +74,20 @@ namespace TimeIsMoney.ViewModels
             }
             catch (Exception)
             {
-
             }
             finally
             {
                 IsBusy = false;
             }
         }
+
         public void OnAppearing()
         {
             IsBusy = true;
         }
     }
-    static class PaletteLoader
+
+    internal static class PaletteLoader
     {
         public static Color[] LoadPalette(params string[] values)
         {

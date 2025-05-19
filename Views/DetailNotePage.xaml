@@ -15,11 +15,10 @@
             <StackLayout Margin="20">
                 <StackLayout VerticalOptions="FillAndExpand">
 
-                    <StackLayout Spacing="5" 
-                       
+                    <StackLayout Spacing="5"
+
                          VerticalOptions="FillAndExpand"
-                         Orientation="Vertical"
-                         >
+                         Orientation="Vertical">
                         <dxe:ComboBoxEdit x:Name="myEdit"  Grid.Row="0" ItemsSource="{Binding nCategoryList}"
                                       LabelText="Категория заметки " DisplayMember="name" ValueMember="nCategoryId"
                                         SelectionChanged="myEdit_SelectionChanged">
@@ -30,15 +29,15 @@
                                         <Ellipse Fill="{Binding getFormatColor}"
          WidthRequest="20"
          HeightRequest="20"
-         HorizontalOptions="End" 
-         Margin="5"/>
+         HorizontalOptions="End"
+         Margin="5" />
                                     </Grid>
                                 </DataTemplate>
                             </dxe:ComboBoxEdit.ItemTemplate>
                         </dxe:ComboBoxEdit>
                         <HorizontalStackLayout Spacing="20">
                             <Entry Text="{Binding Note.name, Mode=TwoWay}" Placeholder="Введите название" MaxLength="25"
-                       FontSize="Title"/>
+                       FontSize="Title" />
                         </HorizontalStackLayout>
                         <Editor x:Name="noteText" Text="{Binding Note.text, Mode=TwoWay}"
                         Placeholder="Текст заметки..."
@@ -53,26 +52,24 @@
                   ColumnSpacing="50"
                   VerticalOptions="Center"
                   HorizontalOptions="CenterAndExpand">
-                        <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40" 
+                        <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40"
                                         HorizontalOptions="Center" VerticalOptions="Center"
                                         Grid.Column="0"
-                                Command="{Binding SaveNoteCommand}" IsVisible="true" 
-                                       >
+                                Command="{Binding SaveNoteCommand}" IsVisible="true">
                             <ImageButton.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </ImageButton.Behaviors>
                         </ImageButton>
 
-
                         <ImageButton Grid.Column="1" Source="cancel.png" HeightRequest="40"
                                  WidthRequest="40"  Command="{Binding CancelCommand}"
-                                 HorizontalOptions="Center" VerticalOptions="Center" >
+                                 HorizontalOptions="Center" VerticalOptions="Center">
                             <ImageButton.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </ImageButton.Behaviors>
                         </ImageButton>
                         <ImageButton Grid.Column="2" Source="delete.png" HeightRequest="35" Command="{Binding NoteTappedDeleteCommand}" CommandParameter="{Binding Note}"
-                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center" >
+                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center">
                             <ImageButton.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                             </ImageButton.Behaviors>

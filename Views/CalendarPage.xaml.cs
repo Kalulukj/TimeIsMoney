@@ -1,13 +1,12 @@
-using DevExpress.Data.Filtering;
-using DevExpress.Maui.Editors;
 using TimeIsMoney.ViewModels;
 
 namespace TimeIsMoney.Views;
 
 public partial class CalendarPage : ContentPage
 {
-    CalendarPageViewModel calendarPageViewModel;
-    void CustomDayCellAppearance(object sender, CustomSelectableCellAppearanceEventArgs e)
+    private CalendarPageViewModel calendarPageViewModel;
+
+    private void CustomDayCellAppearance(object sender, CustomSelectableCellAppearanceEventArgs e)
     {
         if (e.Date.DayOfWeek == DayOfWeek.Saturday || e.Date.DayOfWeek == DayOfWeek.Sunday)
         {
@@ -37,7 +36,6 @@ public partial class CalendarPage : ContentPage
         InitializeComponent();
         this.BindingContext = calendarPageViewModel = new CalendarPageViewModel(Navigation);
     }
-
 
     protected override void OnAppearing()
     {

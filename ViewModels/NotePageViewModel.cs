@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Collections.ObjectModel;
 using TimeIsMoney.Models;
 using TimeIsMoney.Views;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class NotePageViewModel : BaseNoteViewModel
 {
-
     public ObservableCollection<Note> noteList
     {
         get;
@@ -64,8 +57,15 @@ public partial class NotePageViewModel : BaseNoteViewModel
             if (noteList.Count == 0)
             {
                 DateTime exampleDate = DateTime.Now;
-                noteList.Add(new Note() { name = "Так могла выглядеть ваша заметка", text = "А здесь ее описание", 
-                    noteId = -1, date = exampleDate.ToString(), categoryName = "Некоторая категория", nCategoryId = 0 });
+                noteList.Add(new Note()
+                {
+                    name = "Так могла выглядеть ваша заметка",
+                    text = "А здесь ее описание",
+                    noteId = -1,
+                    date = exampleDate.ToString(),
+                    categoryName = "Некоторая категория",
+                    nCategoryId = 0
+                });
             }
             nCategoryList.Clear();
             nCategoryList.Add(new NoteCategory() { nCategoryId = 0, name = "Без категории", color = "#757575" });
@@ -77,7 +77,6 @@ public partial class NotePageViewModel : BaseNoteViewModel
         }
         catch (Exception)
         {
-
         }
         finally
         {

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using TimeIsMoney.Models;
-using Plugin.LocalNotification;
+﻿using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class PlanDetailPageViewModel : BaseNoteViewModel
 {
     public PlanDetailPageViewModel()
@@ -16,12 +9,13 @@ public partial class PlanDetailPageViewModel : BaseNoteViewModel
         Plan = new Plan();
         Now = DateTime.Today;
     }
+
     [RelayCommand]
     public async void SavePlan()
     {
-        var plan = Plan;     
-        if (String.IsNullOrWhiteSpace(plan.name) || 
-            String.IsNullOrWhiteSpace(plan.date) || 
+        var plan = Plan;
+        if (String.IsNullOrWhiteSpace(plan.name) ||
+            String.IsNullOrWhiteSpace(plan.date) ||
             String.IsNullOrWhiteSpace(plan.time)) { return; }
         await App.NoteService.AddUpdatePlanAsync(plan);
         var newDate = DateTime.Parse(plan.date).AddHours(DateTime.Parse(plan.time).Hour).
@@ -29,22 +23,22 @@ public partial class PlanDetailPageViewModel : BaseNoteViewModel
         if ((newDate - DateTime.Now).Minutes > 60) { newDate = newDate.Subtract(new TimeSpan(0, 60, 0)); }
 
         var request = new NotificationRequest
+        {
+            NotificationId = 1000,
+            Title = $"{plan.name} - {plan.getFormatTime}",
+            Subtitle = "Напоминание",
+            Description = plan.text,
+            BadgeNumber = 1,
+            Schedule = new NotificationRequestSchedule
             {
-                NotificationId = 1000,
-                Title = $"{plan.name} - {plan.getFormatTime}",
-                Subtitle = "Напоминание",
-                Description = plan.text,
-                BadgeNumber = 1,
-                Schedule = new NotificationRequestSchedule
-                {
-                    NotifyTime = newDate,
-                    RepeatType = NotificationRepeat.TimeInterval,
-                    NotifyRepeatInterval = TimeSpan.FromMinutes(10)
-                }
-            };
+                NotifyTime = newDate,
+                RepeatType = NotificationRepeat.TimeInterval,
+                NotifyRepeatInterval = TimeSpan.FromMinutes(10)
+            }
+        };
 
         await LocalNotificationCenter.Current.Show(request);
-        
+
         await Shell.Current.GoToAsync("..");
     }
 

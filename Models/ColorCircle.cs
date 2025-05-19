@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace TimeIsMoney.Models;
 
-namespace TimeIsMoney.Models;
 public partial class ColorCircle
 {
     public Color color
@@ -19,6 +14,6 @@ public partial class ColorCircle
 
     public int colorId
     {
-        get;set;
+        get; set;
     }
 }

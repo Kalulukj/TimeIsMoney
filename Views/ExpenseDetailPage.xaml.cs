@@ -1,14 +1,12 @@
-using System.Collections.ObjectModel;
-using System.Globalization;
 using TimeIsMoney.Models;
 using TimeIsMoney.ViewModels;
-using Microsoft.Maui.Platform;
 
 namespace TimeIsMoney.Views;
 
 public partial class ExpenseDetailPage : ContentPage
 {
-    ExpenseDetailPageViewModel expenseDetailPageViewModel;
+    private ExpenseDetailPageViewModel expenseDetailPageViewModel;
+
     public Expense Expense
     {
         get; set;
@@ -52,6 +50,7 @@ public partial class ExpenseDetailPage : ContentPage
             ((ExpenseDetailPageViewModel)BindingContext).SelectedCategoryName = current.name;
         }
     }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
         expenseName.HasError = string.IsNullOrWhiteSpace(expenseName.Text);

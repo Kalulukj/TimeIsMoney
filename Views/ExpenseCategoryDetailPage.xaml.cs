@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.Input;
 using TimeIsMoney.Models;
 using TimeIsMoney.ViewModels;
 
@@ -17,9 +16,9 @@ public partial class ExpenseCategoryDetailPage : ContentPage
         BindingContext = new ExpenseCategoryDetailPageViewModel();
         if (ColorPicker.SelectedItem is ColorCircle current)
             ((ExpenseCategoryDetailPageViewModel)BindingContext).MyColor = current.strColor;
-
     }
-    void ColorPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+    private void ColorPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (ColorPicker.SelectedItem is ColorCircle current)
             ((ExpenseCategoryDetailPageViewModel)BindingContext).MyColor = current.strColor;

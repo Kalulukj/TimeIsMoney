@@ -1,34 +1,32 @@
 ﻿using System.ComponentModel;
-using System.Globalization;
 using TimeIsMoney.Services;
 using TimeIsMoney.Views;
-using Plugin.LocalNotification;
-using Plugin.LocalNotification.EventArgs;
 
 namespace TimeIsMoney;
 
 public partial class App : Application
 {
     public static NoteService _noteService;
+
     public static NoteService NoteService
     {
         get
         {
             if (_noteService == null)
             {
-               /* _noteService = new NoteService(Path.Combine(Environment.GetFolderPath(
-                   Environment.SpecialFolder.LocalApplicationData), "time_is_money.db"));*/
+                /* _noteService = new NoteService(Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), "time_is_money.db"));*/
                 _noteService = new NoteService(Path.Combine("/storage/emulated/0/Documents", "time_is_money.db"));
             }
             return _noteService;
-
         }
     }
+
     public App()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         LocalNotificationCenter.Current.NotificationActionTapped += Current_NotificationActionTapped;
-        Routing.RegisterRoute(nameof(NotePagexaml), typeof(NotePagexaml));
+        Routing.RegisterRoute(nameof(NotePage), typeof(NotePage));
         Routing.RegisterRoute(nameof(DetailNotePage), typeof(DetailNotePage));
         Routing.RegisterRoute(nameof(NoteCategoryDetailPage), typeof(NoteCategoryDetailPage));
         Routing.RegisterRoute(nameof(CalendarPage), typeof(CalendarPage));
@@ -59,11 +57,11 @@ public partial class App : Application
                      ? SettingsService.Instance.Theme.AppTheme
                      : AppTheme.Unspecified;
     }
+
     private void Current_NotificationActionTapped(NotificationActionEventArgs e)
     {
-        if (e.IsDismissed) 
-        { 
-
+        if (e.IsDismissed)
+        {
         }
         if (e.IsTapped)
         {
@@ -72,5 +70,4 @@ public partial class App : Application
             Shell.Current.GoToAsync(nameof(CalendarPage));
         }
     }
-
 }

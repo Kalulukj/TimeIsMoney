@@ -13,7 +13,7 @@
         <toolkit:StatusBarBehavior x:Name="calendarStatusBar" StatusBarColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}" StatusBarStyle="Default">
         </toolkit:StatusBarBehavior>
     </ContentPage.Behaviors>
-    
+
     <Shell.TitleView>
         <toolkit:DockLayout>
             <Label toolkit:DockLayout.DockPosition="Left" Text="Планы" HorizontalOptions="Start" TextColor="White" FontSize="Title" Margin="10"></Label>
@@ -38,11 +38,11 @@
                 CustomDayOfWeekCellAppearance="CustomDayOfWeekCellAppearance" SelectedDateChanged="planCalendar_SelectedDateChanged">
                             <dxe:DXCalendar.DayCellAppearance>
                                 <dxe:CalendarDayCellAppearance FontAttributes="Italic"
-                                       TextColor="{AppThemeBinding Light=Black, Dark=#FAEBD7}"/>
+                                       TextColor="{AppThemeBinding Light=Black, Dark=#FAEBD7}" />
                             </dxe:DXCalendar.DayCellAppearance>
                             <dxe:DXCalendar.DayOfWeekCellAppearance>
                                 <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Italic"
-                                             TextColor="Black"/>
+                                             TextColor="Black" />
                             </dxe:DXCalendar.DayOfWeekCellAppearance>
                         </dxe:DXCalendar>
                     </Border>
@@ -50,14 +50,14 @@
                 <Label x:Name="emptyLabel" Margin="0,0,0,-20" toolkit:DockLayout.DockPosition="None" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center"></Label>
                 <dxcv:DXCollectionView x:Name="PlanView" ItemsSource="{Binding planList}" Margin="15"
                                        IsScrollBarVisible="False" ItemSpacing="10" Orientation="Vertical"
-                                     toolkit:DockLayout.DockPosition="None" >
+                                     toolkit:DockLayout.DockPosition="None">
                     <dxcv:DXCollectionView.SortDescriptions>
-                        <dxcv:SortDescription FieldName="time" SortOrder="Ascending"/>
+                        <dxcv:SortDescription FieldName="time" SortOrder="Ascending" />
                     </dxcv:DXCollectionView.SortDescriptions>
 
                     <!--Group items.-->
                     <dxcv:DXCollectionView.GroupDescription>
-                        <dxcv:GroupDescription FieldName="DateDifferenceFromToday" SortOrder="Ascending"/>
+                        <dxcv:GroupDescription FieldName="DateDifferenceFromToday" SortOrder="Ascending" />
                     </dxcv:DXCollectionView.GroupDescription>
 
                     <!--Define the group header template.-->
@@ -67,8 +67,7 @@
                                 <Label FontSize="25"
                        Margin="-55,-5,0,-5"
                        TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark=White}"
-                       Text="{Binding Value}"/>
-
+                       Text="{Binding Value}" />
                             </StackLayout>
                         </DataTemplate>
                     </dxcv:DXCollectionView.GroupHeaderTemplate>
@@ -80,13 +79,13 @@
                                 </Border.StrokeShape>
                                 <Grid Padding="5" Margin="10">
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                        <TapGestureRecognizer NumberOfTapsRequired="1"
                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vModels:CalendarPageViewModel}},
-                                      Path=PlanTappedEditCommand}" CommandParameter="{Binding .}"/>
+                                      Path=PlanTappedEditCommand}" CommandParameter="{Binding .}" />
                                     </Grid.GestureRecognizers>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="70"></ColumnDefinition>
@@ -97,23 +96,22 @@
                        Text="{Binding getFormatDate}"
                            FontSize="14"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                     <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center"
                        Text="{Binding name}"
                            FontSize="16"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                     <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
                        Text="{Binding text}"
                            FontSize="13"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="#929292"/>
+                       LineBreakMode="TailTruncation" TextColor="#929292" />
                                     <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center"
                        Text="{Binding getFormatTime}"
                            FontSize="14"
                        FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -134,11 +132,7 @@
                 Radius="20"
                 Opacity="0.7" />
                 </Border>
-
             </toolkit:DockLayout>
         </RefreshView>
     </StackLayout>
-
-
-
 </ContentPage>

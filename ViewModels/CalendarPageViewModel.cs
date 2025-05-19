@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Collections.ObjectModel;
 using TimeIsMoney.Models;
 using TimeIsMoney.Views;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class CalendarPageViewModel : BaseNoteViewModel
 {
     public ObservableCollection<Plan> planList
     {
         get;
     }
+
     public CalendarPageViewModel(INavigation navigation)
     {
         planList = new ObservableCollection<Plan>();
@@ -47,14 +43,14 @@ public partial class CalendarPageViewModel : BaseNoteViewModel
                 planList.Add(item);
                 PlanCalendarDays.Add(item);
             }
-            if (planList.Count == 0) {
+            if (planList.Count == 0)
+            {
                 DateTime exampleDate = DateTime.Now;
-                planList.Add(new Plan() { name = "Так выглядят планы", text="Но у вас их нет :)", planId = -1, date = exampleDate.Date.ToString(), time = exampleDate.TimeOfDay.ToString() });
+                planList.Add(new Plan() { name = "Так выглядят планы", text = "Но у вас их нет :)", planId = -1, date = exampleDate.Date.ToString(), time = exampleDate.TimeOfDay.ToString() });
             }
         }
         catch (Exception)
         {
-
         }
         finally
         {
@@ -69,7 +65,8 @@ public partial class CalendarPageViewModel : BaseNoteViewModel
         {
             return;
         }
-        if (plan.planId == -1) {
+        if (plan.planId == -1)
+        {
             await Shell.Current.DisplayAlert("Поубавь обороты!", "Это всего-лишь демонстрация.", "А так хотелось...");
             return;
         }

@@ -4,7 +4,7 @@
              x:Class="TimeIsMoney.Views.PlanDetailPage"
                        xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-             Title="Новая задача"              
+             Title="Новая задача"
              Shell.FlyoutBehavior="Disabled" BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
               Shell.TabBarIsVisible="False" Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}"
              Shell.NavBarIsVisible="True">
@@ -13,43 +13,40 @@
             <StackLayout VerticalOptions="FillAndExpand">
                 <Grid Margin="5" Padding="10" RowSpacing="15">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="70" />
                     </Grid.RowDefinitions>
-                    <dxe:TextEdit x:Name="planName" Text="{Binding Plan.name, Mode=TwoWay}"  Margin="0,0,0,-5"  MaxCharacterCountOverflowMode="LimitInput" MaxCharacterCount="25" ErrorText="Это обязательное поле"  Grid.Row="0" LabelText="Что нужно сделать? "/>
-                    <dxe:TextEdit x:Name="planText" Text="{Binding Plan.text, Mode=TwoWay}"  Margin="0,0,0,-5"  MaxCharacterCountOverflowMode="LimitInput" MaxCharacterCount="25"  Grid.Row="1" LabelText="А поподробнее? "/>
-                    <dxe:DateEdit x:Name="planDate" HeightRequest="58" MinDate="{Binding Now}" Date="{Binding Plan.date, Mode=TwoWay}" Margin="0,0,0,-5" Grid.Row="2" LabelText="Когда? " UseNativePicker="True" DisplayFormat="d" ErrorText="Это обязательное поле"/>
-                    <dxe:TimeEdit x:Name="planTime" HeightRequest="58" Time="{Binding Plan.time, Mode=TwoWay}" Margin="0,0,0,-5" Grid.Row="3" LabelText="Во сколько? " TimeFormatMode="HourFormat24" ErrorText="Это обязательное поле"/>
+                    <dxe:TextEdit x:Name="planName" Text="{Binding Plan.name, Mode=TwoWay}"  Margin="0,0,0,-5"  MaxCharacterCountOverflowMode="LimitInput" MaxCharacterCount="25" ErrorText="Это обязательное поле"  Grid.Row="0" LabelText="Что нужно сделать? " />
+                    <dxe:TextEdit x:Name="planText" Text="{Binding Plan.text, Mode=TwoWay}"  Margin="0,0,0,-5"  MaxCharacterCountOverflowMode="LimitInput" MaxCharacterCount="25"  Grid.Row="1" LabelText="А поподробнее? " />
+                    <dxe:DateEdit x:Name="planDate" HeightRequest="58" MinDate="{Binding Now}" Date="{Binding Plan.date, Mode=TwoWay}" Margin="0,0,0,-5" Grid.Row="2" LabelText="Когда? " UseNativePicker="True" DisplayFormat="d" ErrorText="Это обязательное поле" />
+                    <dxe:TimeEdit x:Name="planTime" HeightRequest="58" Time="{Binding Plan.time, Mode=TwoWay}" Margin="0,0,0,-5" Grid.Row="3" LabelText="Во сколько? " TimeFormatMode="HourFormat24" ErrorText="Это обязательное поле" />
                 </Grid>
-
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
                 <Grid RowDefinitions="*" ColumnDefinitions="*,*,*"
                   ColumnSpacing="50"
                   VerticalOptions="Center"
                   HorizontalOptions="CenterAndExpand">
-                    <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40" 
+                    <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40"
                                         HorizontalOptions="Center" VerticalOptions="Center"
                                         Grid.Column="0"
-                                 Clicked="Button_Clicked" IsVisible="true" 
-                                       >
+                                 Clicked="Button_Clicked" IsVisible="true">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </ImageButton.Behaviors>
                     </ImageButton>
 
-
                     <ImageButton Grid.Column="1" Source="cancel.png" HeightRequest="40"
                                  WidthRequest="40"  Command="{Binding CancelCommand}"
-                                 HorizontalOptions="Center" VerticalOptions="Center" >
+                                 HorizontalOptions="Center" VerticalOptions="Center">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </ImageButton.Behaviors>
                     </ImageButton>
                     <ImageButton Grid.Column="2" Source="delete.png" HeightRequest="35" Command="{Binding PlanTappedDeleteCommand}" CommandParameter="{Binding Plan}"
-                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center" >
+                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
                         </ImageButton.Behaviors>

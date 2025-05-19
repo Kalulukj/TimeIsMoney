@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Collections.ObjectModel;
 using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class ExpenseDetailPageViewModel : BaseNoteViewModel
 {
     public ObservableCollection<ExpenseCategory> eCategoryList
     {
         get;
     }
+
     public ExpenseDetailPageViewModel()
     {
         eCategoryList = new ObservableCollection<ExpenseCategory>();
         Expense = new Expense();
         Now = DateTime.Now;
     }
+
     [RelayCommand]
     public async void SaveExpense()
     {
@@ -34,7 +31,6 @@ public partial class ExpenseDetailPageViewModel : BaseNoteViewModel
         await Shell.Current.GoToAsync("..");
     }
 
-
     [RelayCommand]
     private async Task LoadECategory()
     {
@@ -42,7 +38,7 @@ public partial class ExpenseDetailPageViewModel : BaseNoteViewModel
         try
         {
             eCategoryList.Clear();
-            eCategoryList.Add(new ExpenseCategory() { eCategoryId=0, name="Без категории", color="#757575"});
+            eCategoryList.Add(new ExpenseCategory() { eCategoryId = 0, name = "Без категории", color = "#757575" });
             var newPlanList = await App.NoteService.GetExpenseCategoryAsync();
             foreach (var item in newPlanList)
             {
@@ -51,7 +47,6 @@ public partial class ExpenseDetailPageViewModel : BaseNoteViewModel
         }
         catch (Exception)
         {
-
         }
         finally
         {
@@ -81,5 +76,4 @@ public partial class ExpenseDetailPageViewModel : BaseNoteViewModel
         await App.NoteService.DeleteExpenseAsync(expense.expenseId);
         await Shell.Current.GoToAsync("..");
     }
-
 }

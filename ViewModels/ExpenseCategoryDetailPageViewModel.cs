@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
-using DevExpress.Maui.Core.Internal;
+﻿using System.Collections.ObjectModel;
 using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class ExpenseCategoryDetailPageViewModel : BaseNoteViewModel
 {
     public ObservableCollection<ColorCircle> origin_list
@@ -40,12 +34,13 @@ public partial class ExpenseCategoryDetailPageViewModel : BaseNoteViewModel
     {
         get;
     }
+
     public ExpenseCategoryDetailPageViewModel()
     {
         expenseList = new ObservableCollection<Expense>();
         ExpenseCategory = new ExpenseCategory();
-
     }
+
     [RelayCommand]
     public async void SaveExpenseCategory()
     {

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Collections.ObjectModel;
 using TimeIsMoney.Models;
 using TimeIsMoney.Views;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class ExpensePageViewModel : BaseNoteViewModel
 {
     public ObservableCollection<Expense> expenseList
     {
         get;
     }
+
     public ObservableCollection<ExpenseCategory> eCategoryList
     {
         get;
@@ -67,7 +63,7 @@ public partial class ExpensePageViewModel : BaseNoteViewModel
         {
             expenseList.Clear();
             eCategoryList.Clear();
-            eCategoryList.Add(new ExpenseCategory() {eCategoryId = 0, name="Без категории", color = "#757575" });
+            eCategoryList.Add(new ExpenseCategory() { eCategoryId = 0, name = "Без категории", color = "#757575" });
             var newExpenseList = await App.NoteService.GetExpenseAsync();
             foreach (var item in newExpenseList)
             {
@@ -95,7 +91,6 @@ public partial class ExpensePageViewModel : BaseNoteViewModel
         }
         catch (Exception)
         {
-
         }
         finally
         {

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace TimeIsMoney.Models;
 
-namespace TimeIsMoney.Models;
 public sealed class Theme
 {
     public static readonly Theme Dark = new(AppTheme.Dark, "Темная");
@@ -25,6 +20,7 @@ public sealed class Theme
     {
         get;
     }
+
     public string DisplayName
     {
         get;

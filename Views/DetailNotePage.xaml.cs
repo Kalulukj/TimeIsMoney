@@ -1,10 +1,12 @@
 using TimeIsMoney.Models;
 using TimeIsMoney.ViewModels;
+
 namespace TimeIsMoney.Views;
 
 public partial class DetailNotePage : ContentPage
 {
-    DetailNotePageViewModel detailNotePageViewModel;
+    private DetailNotePageViewModel detailNotePageViewModel;
+
     public Note Note
     {
         get; set;
@@ -32,6 +34,7 @@ public partial class DetailNotePage : ContentPage
             ((DetailNotePageViewModel)BindingContext).SelectedCategoryName = "Без категории";
         }
     }
+
     protected override void OnAppearing()
     {
         base.OnAppearing();

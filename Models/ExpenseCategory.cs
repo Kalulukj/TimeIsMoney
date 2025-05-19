@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿namespace TimeIsMoney.Models;
 
-namespace TimeIsMoney.Models;
 public partial class ExpenseCategory
 {
     [PrimaryKey, AutoIncrement]
@@ -23,6 +17,7 @@ public partial class ExpenseCategory
     {
         get; set;
     }
+
     public Color getFormatColor
     {
         get

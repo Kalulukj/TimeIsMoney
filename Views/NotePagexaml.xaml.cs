@@ -1,17 +1,18 @@
-using DevExpress.Data.Filtering;
 using TimeIsMoney.Models;
 using TimeIsMoney.ViewModels;
 
 namespace TimeIsMoney.Views;
 
-public partial class NotePagexaml : ContentPage
+public partial class NotePage : ContentPage
 {
-  NotePageViewModel notePageViewModel;
-    public NotePagexaml()
-	{
-		InitializeComponent();
+    private NotePageViewModel notePageViewModel;
+
+    public NotePage()
+    {
+        InitializeComponent();
         this.BindingContext = notePageViewModel = new NotePageViewModel(Navigation);
     }
+
     protected override void OnAppearing()
     {
         base.OnAppearing();

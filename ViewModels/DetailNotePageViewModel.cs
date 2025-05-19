@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
+﻿using System.Collections.ObjectModel;
 using TimeIsMoney.Models;
 
 namespace TimeIsMoney.ViewModels;
+
 public partial class DetailNotePageViewModel : BaseNoteViewModel
 {
     public ObservableCollection<NoteCategory> nCategoryList
     {
         get;
     }
+
     public DetailNotePageViewModel()
     {
         nCategoryList = new ObservableCollection<NoteCategory>();
@@ -37,6 +33,7 @@ public partial class DetailNotePageViewModel : BaseNoteViewModel
         await App.NoteService.AddUpdateNoteAsync(note);
         await Shell.Current.GoToAsync("..");
     }
+
     [RelayCommand]
     private async Task LoadNCategory()
     {
@@ -53,7 +50,6 @@ public partial class DetailNotePageViewModel : BaseNoteViewModel
         }
         catch (Exception)
         {
-
         }
         finally
         {
