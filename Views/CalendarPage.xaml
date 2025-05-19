@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+                          xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+  xmlns:models="clr-namespace:TimeIsMoney.Models"
+                     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vModels="clr-namespace:TimeIsMoney.ViewModels"  BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}"
+             x:Class="TimeIsMoney.Views.CalendarPage">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior x:Name="calendarStatusBar" StatusBarColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}" StatusBarStyle="Default">
+        </toolkit:StatusBarBehavior>
+    </ContentPage.Behaviors>
+    
+    <Shell.TitleView>
+        <toolkit:DockLayout>
+            <Label toolkit:DockLayout.DockPosition="Left" Text="Планы" HorizontalOptions="Start" TextColor="White" FontSize="Title" Margin="10"></Label>
+            <ImageButton toolkit:DockLayout.DockPosition="Right" Source="expandcalendar.png" Margin="10" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Clicked="ImageButton_Clicked">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="White" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </toolkit:DockLayout>
+    </Shell.TitleView>
+
+    <StackLayout>
+        <RefreshView Command="{Binding LoadPlanCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+            <toolkit:DockLayout>
+                <toolkit:Expander toolkit:DockLayout.DockPosition="Top"  Padding="10" x:Name="calendarExpander" IsExpanded="True" Direction="Down">
+                    <Border StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle  Margin="10" CornerRadius="10" />
+                        </Border.StrokeShape>
+                        <dxe:DXCalendar x:Name="planCalendar" HeightRequest="300" ShowTrailingDays="True" CustomDayCellAppearance="CustomDayCellAppearance"
+                CustomDayOfWeekCellAppearance="CustomDayOfWeekCellAppearance" SelectedDateChanged="planCalendar_SelectedDateChanged">
+                            <dxe:DXCalendar.DayCellAppearance>
+                                <dxe:CalendarDayCellAppearance FontAttributes="Italic"
+                                       TextColor="{AppThemeBinding Light=Black, Dark=#FAEBD7}"/>
+                            </dxe:DXCalendar.DayCellAppearance>
+                            <dxe:DXCalendar.DayOfWeekCellAppearance>
+                                <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Italic"
+                                             TextColor="Black"/>
+                            </dxe:DXCalendar.DayOfWeekCellAppearance>
+                        </dxe:DXCalendar>
+                    </Border>
+                </toolkit:Expander>
+                <Label x:Name="emptyLabel" Margin="0,0,0,-20" toolkit:DockLayout.DockPosition="None" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                <dxcv:DXCollectionView x:Name="PlanView" ItemsSource="{Binding planList}" Margin="15"
+                                       IsScrollBarVisible="False" ItemSpacing="10" Orientation="Vertical"
+                                     toolkit:DockLayout.DockPosition="None" >
+                    <dxcv:DXCollectionView.SortDescriptions>
+                        <dxcv:SortDescription FieldName="time" SortOrder="Ascending"/>
+                    </dxcv:DXCollectionView.SortDescriptions>
+
+                    <!--Group items.-->
+                    <dxcv:DXCollectionView.GroupDescription>
+                        <dxcv:GroupDescription FieldName="DateDifferenceFromToday" SortOrder="Ascending"/>
+                    </dxcv:DXCollectionView.GroupDescription>
+
+                    <!--Define the group header template.-->
+                    <dxcv:DXCollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="2, 0, 18, 10">
+                                <Label FontSize="25"
+                       Margin="-55,-5,0,-5"
+                       TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark=White}"
+                       Text="{Binding Value}"/>
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </dxcv:DXCollectionView.GroupHeaderTemplate>
+                    <dxcv:DXCollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Plan">
+                            <Border Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+                                <Grid Padding="5" Margin="10">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                      Command="{Binding Source={RelativeSource AncestorType={x:Type vModels:CalendarPageViewModel}},
+                                      Path=PlanTappedEditCommand}" CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.RowSpan="2" Grid.Column="0" VerticalOptions="Center"
+                       Text="{Binding getFormatDate}"
+                           FontSize="14"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center"
+                       Text="{Binding name}"
+                           FontSize="16"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                       Text="{Binding text}"
+                           FontSize="13"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" TextColor="#929292"/>
+                                    <Label Grid.RowSpan="2" Grid.Column="2" VerticalOptions="Center"
+                       Text="{Binding getFormatTime}"
+                           FontSize="14"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </dxcv:DXCollectionView.ItemTemplate>
+                </dxcv:DXCollectionView>
+
+                <Border Margin="20" toolkit:DockLayout.DockPosition="Bottom"
+                Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                BackgroundColor="{AppThemeBinding Light=Black, Dark=White}"
+                HorizontalOptions="End" VerticalOptions="End" HeightRequest="60" WidthRequest="60">
+                    <Button BackgroundColor="{AppThemeBinding Light=Black, Dark=White}" Command="{Binding AddPlanCommand}"
+     Text="+" FontSize="35" Margin="0,-5,0,0" FontAttributes="Bold" TextColor="{AppThemeBinding Light=White, Dark=Black}"></Button>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <Border.Shadow Brush="{AppThemeBinding Light=Black, Dark=White}"
+                Offset="20,20"
+                Radius="20"
+                Opacity="0.7" />
+                </Border>
+
+            </toolkit:DockLayout>
+        </RefreshView>
+    </StackLayout>
+
+
+
+</ContentPage>

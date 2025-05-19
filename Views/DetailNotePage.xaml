@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeIsMoney.Views.DetailNotePage"
+                          xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                          xmlns:vModels="clr-namespace:TimeIsMoney.ViewModels"
+              xmlns:models="clr-namespace:TimeIsMoney.Models" Title="Новая заметка"
+             Shell.FlyoutBehavior="Disabled" BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
+              Shell.TabBarIsVisible="False" Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}"
+             Shell.NavBarIsVisible="True">
+    <RefreshView x:DataType="vModels:DetailNotePageViewModel" Command="{Binding LoadNCategoryCommand}"
+                  IsRefreshing="{Binding IsBusy}">
+        <ScrollView>
+            <StackLayout Margin="20">
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <StackLayout Spacing="5" 
+                       
+                         VerticalOptions="FillAndExpand"
+                         Orientation="Vertical"
+                         >
+                        <dxe:ComboBoxEdit x:Name="myEdit"  Grid.Row="0" ItemsSource="{Binding nCategoryList}"
+                                      LabelText="Категория заметки " DisplayMember="name" ValueMember="nCategoryId"
+                                        SelectionChanged="myEdit_SelectionChanged">
+                            <dxe:ComboBoxEdit.ItemTemplate>
+                                <DataTemplate x:DataType="models:NoteCategory">
+                                    <Grid ColumnDefinitions="*,10">
+                                        <Label Padding="10" Text="{Binding name}" FontAttributes="Bold" />
+                                        <Ellipse Fill="{Binding getFormatColor}"
+         WidthRequest="20"
+         HeightRequest="20"
+         HorizontalOptions="End" 
+         Margin="5"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </dxe:ComboBoxEdit.ItemTemplate>
+                        </dxe:ComboBoxEdit>
+                        <HorizontalStackLayout Spacing="20">
+                            <Entry Text="{Binding Note.name, Mode=TwoWay}" Placeholder="Введите название" MaxLength="25"
+                       FontSize="Title"/>
+                        </HorizontalStackLayout>
+                        <Editor x:Name="noteText" Text="{Binding Note.text, Mode=TwoWay}"
+                        Placeholder="Текст заметки..."
+                    FontSize="Body" FontAutoScalingEnabled="True"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                        </Editor>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                    <Grid RowDefinitions="*" ColumnDefinitions="*,*,*"
+                  ColumnSpacing="50"
+                  VerticalOptions="Center"
+                  HorizontalOptions="CenterAndExpand">
+                        <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40" 
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        Grid.Column="0"
+                                Command="{Binding SaveNoteCommand}" IsVisible="true" 
+                                       >
+                            <ImageButton.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+
+
+                        <ImageButton Grid.Column="1" Source="cancel.png" HeightRequest="40"
+                                 WidthRequest="40"  Command="{Binding CancelCommand}"
+                                 HorizontalOptions="Center" VerticalOptions="Center" >
+                            <ImageButton.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+                        <ImageButton Grid.Column="2" Source="delete.png" HeightRequest="35" Command="{Binding NoteTappedDeleteCommand}" CommandParameter="{Binding Note}"
+                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center" >
+                            <ImageButton.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeIsMoney.Views.ExpenseCategoryDetailPage"
+xmlns:models="clr-namespace:TimeIsMoney.Models"
+          xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                  xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             Shell.FlyoutBehavior="Disabled" BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
+              Shell.TabBarIsVisible="False" Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}"
+             Shell.NavBarIsVisible="True"
+             Title="Новая категория">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent"/>
+                                <Setter Property="Scale" Value="1.2"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent"/>
+                                <Setter Property="Scale" Value="0.8"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="FillAndExpand">
+                <dxe:TextEdit Text="{Binding ExpenseCategory.name, Mode=TwoWay}"  Margin="0,0,0,-10" x:Name="eCategoryName"
+                              MaxCharacterCountOverflowMode="LimitInput" MaxCharacterCount="25" ErrorText ="Название - обязательное поле"
+                              Grid.Row="0" LabelText="Название категории? "/>
+
+                <Label Margin="0,20,0,5" Text="Выберите цвет раздела"/>
+
+                <Border Padding="10" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <CollectionView x:Name="ColorPicker" ItemsLayout="HorizontalGrid, 3" HorizontalOptions="Center" 
+                                    ItemsSource="{Binding origin_list}" SelectionChanged="ColorPicker_SelectionChanged"
+                            SelectionMode="Single">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ColorCircle">
+
+                                <Grid>
+                                    <Grid ColumnDefinitions="Auto"
+                      Padding="10"
+                                  Margin="5"
+                      ColumnSpacing="25"/>
+                                    <Ellipse Fill="{Binding color}"
+         WidthRequest="45"
+         HeightRequest="45"
+         HorizontalOptions="Center" 
+         Margin="5"/>
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Border>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Grid Scale="1" RowDefinitions="*" ColumnDefinitions="*,*,*"
+                  ColumnSpacing="50"
+                  VerticalOptions="Center"
+                  HorizontalOptions="CenterAndExpand">
+                    <ImageButton Source="add.png" HeightRequest="40" WidthRequest="40" 
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        Grid.Column="0"
+                                 Clicked="Button_Clicked" IsVisible="true" 
+                                       >
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                        </ImageButton.Behaviors>
+                    </ImageButton>
+
+
+                    <ImageButton Grid.Column="1" Source="cancel.png" HeightRequest="40"
+                                 WidthRequest="40"  Command="{Binding CancelCommand}"
+                                 HorizontalOptions="Center" VerticalOptions="Center" >
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                        </ImageButton.Behaviors>
+                    </ImageButton>
+                    <ImageButton Grid.Column="2" Source="delete.png" HeightRequest="35" Command="{Binding ExpenseCategoryTappedDeleteCommand}" CommandParameter="{Binding ExpenseCategory}"
+                               WidthRequest="35" HorizontalOptions="Center" VerticalOptions="Center" >
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                        </ImageButton.Behaviors>
+                    </ImageButton>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

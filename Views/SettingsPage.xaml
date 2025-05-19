@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeIsMoney.Views.SettingsPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:TimeIsMoney.Models"
+  xmlns:settings="clr-namespace:TimeIsMoney.Services"
+             BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior x:Name="aboutStatus" StatusBarColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}" StatusBarStyle="Default">
+        </toolkit:StatusBarBehavior>
+    </ContentPage.Behaviors>
+    <Shell.TitleView>
+        <toolkit:DockLayout>
+            <Label x:Name="titleLabel" toolkit:DockLayout.DockPosition="Left" Text="Информация" HorizontalOptions="Start" TextColor="White" FontSize="Title" Margin="10"></Label>
+        </toolkit:DockLayout>
+    </Shell.TitleView>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <StackLayout>
+
+            <Grid>
+                <VerticalStackLayout
+      Spacing="25"
+      Padding="30,0"
+      Margin="0,10,0,0"
+      VerticalOptions="Start">
+                    <HorizontalStackLayout
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+                        <Label
+          VerticalOptions="Center"
+          Text="Тема приложения: " />
+
+                        <!-- Note: We are binding to the SettingsService singleton and the DisplayName of the Theme -->
+                        <Picker
+            x:DataType="{x:Null}"
+            BindingContext="{Binding Source={x:Static models:Theme.AvailableThemes}}"
+            ItemDisplayBinding="{Binding DisplayName}"
+            ItemsSource="{Binding Source={x:Static models:Theme.AvailableThemes}}"
+            SelectedItem="{Binding Path=Theme, Source={x:Static settings:SettingsService.Instance}}"
+            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Grid>
+            <StackLayout>
+                <Border Margin="20,10,20,10" HeightRequest="150" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+                    <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                        </Grid.GestureRecognizers>
+                        <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+                <Image Source="user.png" WidthRequest="20" VerticalOptions="Start" HorizontalOptions="Center"
+                       HeightRequest="20" Grid.Row="0" Grid.Column="0">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Grid.Column="1" FontSize="16" Grid.Row="0" FontAttributes="Bold" Text="Разработчик"/>
+                        <Label Grid.Column="2" FontSize="16" Grid.Row="0" FontAttributes="Bold" HorizontalOptions="End" Text="Шаков Виктор"/>
+
+                        <Image Source="vk.png" Margin="0,15,0,0" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
+                       HeightRequest="30" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Grid.Column="1" FontSize="16" Margin="0,15,0,0" Grid.Row="1" Grid.ColumnSpan="2" FontAttributes="Bold" Text="Связь с разработчиком"/>
+                        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Text="Если у вас есть вопросы, то вы можете связаться с разработчиком приложения."/>
+                    </Grid>
+        </Border>
+        </StackLayout>
+        <StackLayout>
+                <Border Margin="20,10,20,10" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" HeightRequest="220"
+                        BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+        <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
+                        </Grid.GestureRecognizers>
+                        <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                        </Grid.ColumnDefinitions>
+                <Image Source="github.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
+                       HeightRequest="30" Grid.RowSpan="2" Grid.Column="0">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Grid.ColumnSpan="2" Grid.Column="1" FontSize="16" Grid.Row="0" FontAttributes="Bold" Text="Исходный код приложения"/>
+                        <Label Grid.ColumnSpan="2"  Grid.Column="1" Margin="0,-20,0,0" Grid.Row="1" Text="Код приложения находится в свободном доступе на Github разработчика."/>
+                        <Image Margin="0,-5,0,0" Source="tag.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
+                       HeightRequest="30" Grid.Row="2" Grid.Column="0">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Grid.Column="1" FontSize="16"  Grid.Row="2" FontAttributes="Bold" Text="Версия приложения"/>
+                        <Label Grid.Column="2" FontSize="16" FontAttributes="Bold"  Grid.Row="2" HorizontalOptions="End" Text="1.0.1"/>
+
+                        <Image Margin="0,10,0,0"  Source="license.png" WidthRequest="30" VerticalOptions="Start" HorizontalOptions="Center"
+                       HeightRequest="30" Grid.Row="3" Grid.Column="0">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Grid.Column="1"  Margin="0,15,0,0" FontSize="16"  Grid.Row="3" FontAttributes="Bold" Text="Лицензия"/>
+                        <Label Grid.Column="2"  Margin="0,15,0,0" HorizontalTextAlignment="End" FontSize="16" FontAttributes="Bold"  Grid.Row="3" HorizontalOptions="End" Text="Apache License 2.0"/>
+
+                    </Grid>
+        </Border>
+        </StackLayout>
+            <StackLayout>
+                <Border Margin="20,10,20,10" Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" HeightRequest="50"
+                        BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Grid Padding="5" Margin="5" RowSpacing="-10" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="diploma.png" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"
+                       HeightRequest="20" Grid.Row="0" Grid.Column="0">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                            </Image.Behaviors>
+                        </Image>
+                        <Label Grid.Column="1" FontSize="13" Grid.Row="0" VerticalTextAlignment="Center" Text="Разработано в рамках дипломного проекта"/>
+                    </Grid>
+                </Border>
+            </StackLayout>
+            <StackLayout  VerticalOptions="End">
+                <Image Margin="20" Source="creditimage.png" HorizontalOptions="Center" HeightRequest="150" WidthRequest="150"
+                   VerticalOptions="Center" BackgroundColor="Transparent"></Image>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

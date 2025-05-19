@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeIsMoney.Views.NotePagexaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+  xmlns:models="clr-namespace:TimeIsMoney.Models" BackgroundColor="{AppThemeBinding Light=#ffffff, Dark=#121212}"
+                     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vModels="clr-namespace:TimeIsMoney.ViewModels" Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior x:Name="noteStatus" StatusBarColor="{AppThemeBinding Light={StaticResource Primary}, Dark=#121212}" StatusBarStyle="Default">
+        </toolkit:StatusBarBehavior>
+    </ContentPage.Behaviors>
+    <Shell.TitleView>
+        <toolkit:DockLayout>
+            <Label x:Name="titleLabel" toolkit:DockLayout.DockPosition="Left" Text="Заметки" HorizontalOptions="Start" TextColor="White" FontSize="Title" Margin="10"></Label>
+            <ImageButton toolkit:DockLayout.DockPosition="Right" Source="expandfolder.png" Margin="10" WidthRequest="24" HeightRequest="24" HorizontalOptions="End" Clicked="ToolbarItem_Clicked">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="White" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </toolkit:DockLayout>
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Добавить категорию" Order="Secondary" Command="{Binding AddNoteCategoryCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <RefreshView Command="{Binding LoadNoteCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+            <toolkit:DockLayout>
+
+                <toolkit:Expander Padding="5" Margin="10" toolkit:DockLayout.DockPosition="Top" x:Name="myExpander" Direction="Down">
+                    <dxe:ComboBoxEdit x:Name="myEdit"  Grid.Row="0" ItemsSource="{Binding nCategoryList}"
+                                      LabelText="Категория заметок" DisplayMember="name" 
+                                  SelectionChanged="myEdit_SelectionChanged">
+                        <dxe:ComboBoxEdit.ItemTemplate>
+                            <DataTemplate x:DataType="models:NoteCategory">
+                                <Grid ColumnDefinitions="*,40,40">
+                                    <Label Grid.Column="0" Padding="10" Text="{Binding name}" FontAttributes="Bold" />
+                                    <Ellipse Fill="{Binding getFormatColor}" Grid.Column="1"
+         WidthRequest="20"
+         HeightRequest="20"
+         HorizontalOptions="End" 
+         Margin="5"/>
+                                    <ImageButton Source="edit.png" Grid.Column="2" 
+                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vModels:NotePageViewModel}},
+                                      Path=NoteCategoryTappedEditCommand}" CommandParameter="{Binding .}"
+                                             HeightRequest="20" WidthRequest="20">
+                                        <ImageButton.Behaviors>
+                                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}" />
+                                        </ImageButton.Behaviors>
+                                    </ImageButton>
+                                </Grid>
+                            </DataTemplate>
+                        </dxe:ComboBoxEdit.ItemTemplate>
+                    </dxe:ComboBoxEdit>
+                </toolkit:Expander>
+                <Label x:Name="emptyLabel" Margin="0,0,0,-30" toolkit:DockLayout.DockPosition="None" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+
+                <dxcv:DXCollectionView x:Name="NoteView" ItemsSource="{Binding noteList}" Margin="15"
+                                       IsScrollBarVisible="False" ItemSpacing="10" Orientation="Vertical"
+                                     toolkit:DockLayout.DockPosition="None" >
+                    <dxcv:DXCollectionView.SortDescriptions>
+                        <dxcv:SortDescription FieldName="date" SortOrder="Descending"/>
+                    </dxcv:DXCollectionView.SortDescriptions>
+
+                    <!--Group items.-->
+                    <dxcv:DXCollectionView.GroupDescription>
+                        <dxcv:GroupDescription FieldName="DateDifferenceFromToday" SortOrder="Ascending"/>
+                    </dxcv:DXCollectionView.GroupDescription>
+
+                    <!--Define the group header template.-->
+                    <dxcv:DXCollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="2, 0, 18, 10">
+                                <Label FontSize="25"
+                       Margin="-55,-5,0,-5"
+                       TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark=White}"
+                       Text="{Binding Value}"/>
+                              
+                            </StackLayout>
+                        </DataTemplate>
+                    </dxcv:DXCollectionView.GroupHeaderTemplate>
+                    <dxcv:DXCollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Note">
+                            <Border Stroke="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}" BackgroundColor="{AppThemeBinding Light=#f7f7f7, Dark=#1e1e1e}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+                                <Grid Padding="5" Margin="10">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                      Command="{Binding Source={RelativeSource AncestorType={x:Type vModels:NotePageViewModel}},
+                                      Path=NoteTappedEditCommand}" CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Border Stroke="{Binding getFormatColor}" Grid.Row="0" HorizontalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="3" />
+                                        </Border.StrokeShape>
+                                        <Label Padding="2"
+                           BackgroundColor="{Binding getFormatColor}"
+                           TextColor="{AppThemeBinding Light=White, Dark=Black}" FontAttributes="Bold"
+                       Text="{Binding categoryName}"/>
+                                    </Border>
+                                    <Label Grid.Row="1"
+                       Text="{Binding name}"
+                           FontSize="20"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    <Label Grid.Row="2" MaxLines="10" Margin="0,10,0,0" FontSize="16"
+                       Text="{Binding text}"
+                       LineBreakMode="CharacterWrap"  TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    <Label Grid.Row="3" FontSize="11"  Margin="0,10,0,0"
+                       Text="{Binding getFormatDate}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" TextColor="#929292"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </dxcv:DXCollectionView.ItemTemplate>
+                </dxcv:DXCollectionView>
+
+                <Border Margin="20" toolkit:DockLayout.DockPosition="Bottom"
+                Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                BackgroundColor="{AppThemeBinding Light=Black, Dark=White}"
+                HorizontalOptions="End" VerticalOptions="End" HeightRequest="60" WidthRequest="60">
+                    <Button BackgroundColor="{AppThemeBinding Light=Black, Dark=White}" Command="{Binding AddNoteCommand}"
+                    Text="+" FontSize="35" Margin="0,-5,0,0" FontAttributes="Bold" TextColor="{AppThemeBinding Light=White, Dark=Black}"></Button>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                    <Border.Shadow Brush="{AppThemeBinding Light=Black, Dark=White}"
+                Offset="20,20"
+                Radius="20"
+                Opacity="0.7" />
+                </Border>
+
+            </toolkit:DockLayout>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>
