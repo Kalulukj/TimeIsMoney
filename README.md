@@ -113,30 +113,61 @@
 <div>
 </br>
     <p align="center">
-      <img src="images/notes.png" height="400"  alt="screenshot"/>
-      <img src="images/notes-category" height="400"  alt="screenshot"/>
-      <img src="images/add-note.png" height="400"  alt="screenshot"/>
+      <img src="images/notes.PNG" height="450"  alt="заметки"/>
+      <img src="images/notes-category.png" height="450"  alt="заметки по категориям"/>
+      <img src="images/add-note.PNG" height="450"  alt="добавление заметок"/>
     </p>
     <p align="center">
-      <img src="images/add-category.png" height="400"  alt="screenshot"/>
-      <img src="images/notes-dark.png" height="400"  alt="screenshot"/>
+      <img src="images/add-category.PNG" height="450"  alt="добавление категорий"/>
+      <img src="images/notes-dark.png" height="450"  alt="темные заметки"/>
     </p>
   </div>
 </details>
 
 <details>
     <summary>Планы</summary>
-
+<div>
+</br>
+    <p align="center">
+      <img src="images/plans.PNG" height="450"  alt="планы"/>
+      <img src="images/plans-calendar.PNG" height="450"  alt="планы по датам"/>
+      <img src="images/add-plan.PNG" height="450"  alt="добавление планов"/>
+    </p>
+    <p align="center">
+      <img src="images/plans-dark.png" height="450"  alt="темные планы"/>
+    </p>
+  </div>
 </details>
 
 <details>
     <summary>Расходы</summary>
-
+<div>
+</br>
+    <p align="center">
+      <img src="images/expenses.PNG" height="450"  alt="расходы"/>
+      <img src="images/expenses-category.png" height="450"  alt="расходы по категориям"/>
+      <img src="images/expenses-calendar.PNG" height="450"  alt="расходы по датам"/>
+    </p>
+    <p align="center">
+      <img src="images/add-expenses.PNG" height="450"  alt="добавление расходов"/>
+      <img src="images/chart-count.PNG" height="450"  alt="диаграмма по количеству"/>
+      <img src="images/chart-sum.PNG" height="450"  alt="диаграмма по сумме"/>
+    </p>
+    <p align="center">
+      <img src="images/expenses-dark.png" height="450"  alt="темные расходы"/>
+    </p>
+  </div>
 </details>
 
 <details>
     <summary>О приложении</summary>
-
+<div>
+</br>
+    <p align="center">
+      <img src="images/about.PNG" height="450"  alt="о приложении"/>
+      <img src="images/about-dark.png" height="450"  alt="темные настройки"/>
+    </p>
+  </div>
 </details>
 
 ## Лицензия
