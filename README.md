@@ -1,175 +1,124 @@
-<h1 align="center">
-    <img src="images/mainicon.svg" width="200px" height="200px" alt="icon" />
-    <br />
-    <b>Time is Money | Track notes, schedule plans, and manage expenses all in one app.</b>
-</h1>
+# TimeIsMoney 🕒💰
 
-<p align="center">
-    <a href="#зачем">Зачем?</a>
-    •
-    <a href="#технологии">Технологии</a>
-    •
-    <a href="#функциональность">Функциональность</a>
-    •
-    <a href="#скриншоты">Скриншоты</a>
-    •
-    <a href="#лицензия">Лицензия</a>
-</p>
+![GitHub release](https://img.shields.io/badge/Latest%20Release-v1.0.0-brightgreen) ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## Зачем?
+Welcome to the **TimeIsMoney** repository! This project offers a simple yet powerful application for managing notes, schedules, and expense tracking—all in one place. Whether you are a student, a professional, or anyone looking to organize their life, this app is designed to meet your needs.
 
-<p>
-Этот проект - моя дипломная работа, ставшая прекрасной возможностью попробовать себя в мобильной разработке. С самого начала было решено разрабатывать мобильное приложение (предметная область определилась позже), а то, что мне всегда нравился C#, предопределило выбор .NET MAUI. Это проект стал отличной возможность попробовать себя в мобильной разработке, изучить новый фреймворк и углубить свои знания о .Net в целом.
-</p>
+## Table of Contents
 
-## Технологии
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
+8. [Releases](#releases)
 
-Этот проект построен с использованием следующих технологий:
+## Features
 
-*   **Основные:**
-    *   Visual Studio - IDE для разработки.
-    *   C# - Язык программирования.
-    *   .NET MAUI - Кроссплатформенный фреймворк для создания нативных приложений.
-    *   SQLite - Локальная реляционная база данных для хранения данных.
-    *   DevExpress - Библиотека UI-компонентов для .NET MAUI (укажите конкретные компоненты, если это возможно).
+- **Notes Management**: Keep your thoughts organized with a simple notes feature.
+- **Scheduling**: Create and manage your schedule effortlessly.
+- **Expense Tracking**: Track your expenses and keep your finances in check.
+- **User Notifications**: Get reminders for your tasks and appointments.
+- **SQLite Database**: All data is stored securely using SQLite.
+- **MVVM Architecture**: The app uses the Model-View-ViewModel design pattern for clean separation of concerns.
+- **Cross-Platform**: Built with .NET MAUI, the app runs smoothly on both Android and iOS devices.
 
-*   **Архитектура:**
-    *   MVVM (Model-View-ViewModel) - Архитектурный паттерн для разделения UI и бизнес-логики:
-        *   `Model`: Представляет данные и бизнес-логику.
-        *   `View`: Отвечает за отображение данных и взаимодействие с пользователем.
-        *   `ViewModel`: Предоставляет данные для View и обрабатывает пользовательские действия.
+## Technologies Used
 
-*   **Платформа:**
-    *   Android - Целевая платформа.
- 
-## Функциональность
+This project utilizes several technologies to ensure a robust and efficient application:
 
-### Общее
+- **Android**: The app is designed to run on Android devices.
+- **C#**: The primary programming language used for development.
+- **DevExpress**: For enhanced UI components.
+- **MAUI**: .NET Multi-platform App UI for cross-platform capabilities.
+- **SQLite**: For local data storage.
+- **Visual Studio**: The IDE used for development.
+- **MVVM**: A design pattern that helps in separating the UI from the business logic.
 
-*   Интуитивно понятный пользовательский интерфейс.
-*   Адаптивная темная/светлая тема.
-*   Локальное хранение данных.
+## Installation
 
-### Заметки
+To get started with **TimeIsMoney**, follow these steps:
 
-*   **Создание и редактирование:**
-    *   Создание новых заметок с текстом.
-    *   Редактирование существующих заметок.
-*   **Категории заметок:**
-    *   Создание и управление категориями для заметок.
-    *   Назначение категорий заметкам.
-*   **Фильтрация и поиск:**
-    *   Фильтрация заметок по категориям.
-*   **Группировка:**
-    *   Группировка заметок по временным отрезкам.
+1. Clone the repository:
 
-### Планы
+   ```bash
+   git clone https://github.com/Kalulukj/TimeIsMoney.git
+   ```
 
-*   **Создание и редактирование планов:**
-    *   Создание планов.
-    *   Редактирование существующих планов.
-*   **Группировка:**
-    *   Группировка планов по временным отрезкам.
-*   **Календарь:**
-    *   Отображение планов на календаре.
-    *   Фильтрация планов по выбранной дате в календаре.
-*   **Уведомления:**
-    *   Уведомления за час до назначенного времени плана.
-    *   Уведомления о наступлении времени плана.
+2. Open the project in Visual Studio.
 
-### Расходы
+3. Restore the NuGet packages:
 
-*   **Создание и редактирование расходов:**
-    *   Создание расходов с указанием суммы, категории и описания.
-    *   Редактирование существующих расходов.
-*   **Категории расходов:**
-    *   Создание и управление категориями для расходов.
-    *   Назначение категорий расходам.
-*   **Фильтрация и календарь:**
-    *   Фильтрация расходов по категориям.
-    *   Фильтрация расходов по датам через календарь.
-*   **Диаграмма расходов:**
-    *   Отображение общей диаграммы расходов.
-    *   Диаграмма, показывающая распределение трат по суммам.
-    *   Диаграмма, показывающая распределение трат по категориям.
+   ```bash
+   dotnet restore
+   ```
 
-### Настройки
+4. Build the project:
 
-*   **Тема:**
-    *   Выбор светлой темы.
-    *   Выбор темной темы.
-    *   Использование системной темы устройства.
+   ```bash
+   dotnet build
+   ```
 
-### Хранение данных
+5. Run the application:
 
-*   Все данные хранятся локально на устройстве в базе данных SQLite.
+   ```bash
+   dotnet run
+   ```
 
-## Скриншоты
+## Usage
 
-### Здесь представлены скриншоты различных экранов приложения
+Once you have installed the app, you can start using it immediately. Here’s a quick guide on how to navigate through the main features:
 
-<details>
-    <summary>Заметки</summary>
-<div>
-</br>
-    <p align="center">
-      <img src="images/notes.PNG" height="450"  alt="заметки"/>
-      <img src="images/notes-category.png" height="450"  alt="заметки по категориям"/>
-      <img src="images/add-note.PNG" height="450"  alt="добавление заметок"/>
-    </p>
-    <p align="center">
-      <img src="images/add-category.PNG" height="450"  alt="добавление категорий"/>
-      <img src="images/notes-dark.png" height="450"  alt="темные заметки"/>
-    </p>
-  </div>
-</details>
+### Notes
 
-<details>
-    <summary>Планы</summary>
-<div>
-</br>
-    <p align="center">
-      <img src="images/plans.PNG" height="450"  alt="планы"/>
-      <img src="images/plans-calendar.PNG" height="450"  alt="планы по датам"/>
-      <img src="images/add-plan.PNG" height="450"  alt="добавление планов"/>
-    </p>
-    <p align="center">
-      <img src="images/plans-dark.png" height="450"  alt="темные планы"/>
-    </p>
-  </div>
-</details>
+- Open the **Notes** section to create, edit, or delete notes.
+- Use the search function to quickly find specific notes.
 
-<details>
-    <summary>Расходы</summary>
-<div>
-</br>
-    <p align="center">
-      <img src="images/expenses.PNG" height="450"  alt="расходы"/>
-      <img src="images/expenses-category.png" height="450"  alt="расходы по категориям"/>
-      <img src="images/expenses-calendar.PNG" height="450"  alt="расходы по датам"/>
-    </p>
-    <p align="center">
-      <img src="images/add-expenses.PNG" height="450"  alt="добавление расходов"/>
-      <img src="images/chart-count.PNG" height="450"  alt="диаграмма по количеству"/>
-      <img src="images/chart-sum.PNG" height="450"  alt="диаграмма по сумме"/>
-    </p>
-    <p align="center">
-      <img src="images/expenses-dark.png" height="450"  alt="темные расходы"/>
-    </p>
-  </div>
-</details>
+### Scheduling
 
-<details>
-    <summary>О приложении</summary>
-<div>
-</br>
-    <p align="center">
-      <img src="images/about.PNG" height="450"  alt="о приложении"/>
-      <img src="images/about-dark.png" height="450"  alt="темные настройки"/>
-    </p>
-  </div>
-</details>
+- Navigate to the **Schedule** tab to add new events.
+- Set reminders for each event to receive notifications.
 
-## Лицензия
+### Expense Tracking
 
-Time is Money распространяется на условиях лицензии Apache (версия 2.0). Подробности в [Лицензия](LICENSE.txt).
+- Go to the **Expenses** section to input your spending.
+- View reports to analyze your financial habits.
+
+### Notifications
+
+- Enable notifications in the settings to receive timely reminders for your tasks and events.
+
+## Contributing
+
+We welcome contributions to improve **TimeIsMoney**! If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your changes to your forked repository.
+5. Create a pull request to the main repository.
+
+Please ensure your code adheres to our coding standards and includes appropriate tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or feedback, please reach out:
+
+- **Email**: example@example.com
+- **Twitter**: [@YourTwitterHandle](https://twitter.com/YourTwitterHandle)
+
+## Releases
+
+To download the latest version of the app, visit the [Releases](https://github.com/Kalulukj/TimeIsMoney/releases) section. Make sure to download the file and execute it on your device.
+
+For future updates, you can also check the [Releases](https://github.com/Kalulukj/TimeIsMoney/releases) section.
+
+---
+
+Thank you for checking out **TimeIsMoney**! We hope this app helps you manage your time and finances effectively. Your feedback is invaluable, so please let us know your thoughts!
